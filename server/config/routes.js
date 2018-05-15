@@ -10,10 +10,10 @@ module.exports= (app)=>{
     app.get('/:task_id/', (req, res)=>{
         task.task(req,res);
     })
-    app.get('/update/:task_id/', (req, res)=>{
+    app.put('/update/:task_id/', (req, res)=>{
         task.updateTask(req,res);
     })
-    app.get('/remove/:task_id/', (req, res)=>{
+    app.delete('/remove/:task_id/', (req, res)=>{
         task.removeTask(req,res);
     })
 }

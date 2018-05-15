@@ -7,7 +7,7 @@ module.exports={
         Task.find({}, (err, tasks)=>{
             console.log(err);
             console.log(tasks);
-            return res.render('index');
+            return res.json(tasks);
         });
     },
 // FINISH ALL THE TASK.JSSADOKLSKMDADSALKM

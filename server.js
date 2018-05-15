@@ -22,7 +22,7 @@ mongoose.Promise = global.Promise;
 
 
 app.use(express.static( __dirname + '/public/dist/public'));
-app.set('views', path.join(__dirname, './client/views'));
+// app.set('views', path.join(__dirname, './client/views'));
 
 app.set('view engine', 'ejs');
 
