@@ -14,8 +14,6 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.tasks = [];
     this.oneTask = {};
-    this.getTasksFromService();
-    this.getSpecificTask("5af9f9747fabe7d423d34620");
     this.title = 'Restful Tasks'
   }
   getTasksFromService(){

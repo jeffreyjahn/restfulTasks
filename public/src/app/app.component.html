@@ -3,14 +3,15 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <button (click)="getTasksFromService()">Get Tasks</button>
   <div id="tasks">
     <h1>All the tasks:</h1>
     <ul *ngFor="let task of tasks">
-      <li>{{ task.title }} - {{ task.description }}</li>
+      <li>{{ task.title }} - {{ task.description }}  <button (click)="getSpecificTask(task._id)">Show Me</button></li>
     </ul>
   </div>
   <div id="oneTask" *ngIf="oneTask">
-    <h1>The third task:</h1>
+    <h1>The task:</h1>
     <ul>
       <li>{{ oneTask.title }} - {{ oneTask.description }}</li>
     </ul>
