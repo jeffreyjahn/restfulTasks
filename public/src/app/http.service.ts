@@ -11,11 +11,9 @@ export class HttpService {
     this.getTask("5af9f9747fabe7d423d34620");
   }
   getTasks(){
-    let tempObservable = this._http.get('/tasks');
-    tempObservable.subscribe(data=>console.log("Got our data!", data))
+    return this._http.get('/tasks');
   }
   getTask(id){
-    let tempObservable = this._http.get('/'+id+'/');
-    tempObservable.subscribe(data=>console.log("Got our data!", data))
+    return this._http.get('/'+id+'/');
   }
 }
