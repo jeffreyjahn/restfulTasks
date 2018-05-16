@@ -3,18 +3,84 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <button (click)="getTasksFromService()">Get Tasks</button>
+</div>
+<div id="mainBody">
+  <h2>New Task</h2>
+  <form (submit)="newTaskSubmit()">
+    <!-- <p>{{ newTask | json }}</p> -->
+    <table>
+      <tr>
+        <td>
+          Title:
+        </td>
+        <td>
+          <input type="text" name="newTask.title" [(ngModel)]="newTask.title">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Description:
+        </td>
+        <td>
+          <input type="text" name="newTask.description" [(ngModel)]="newTask.description">
+        </td>
+        <td>
+          <input type="submit" value="Create Task">
+        </td>
+      </tr>
+    </table>
+  </form>
+   
   <div id="tasks">
     <h1>All the tasks:</h1>
     <ul *ngFor="let task of tasks">
-      <li>{{ task.title }} - {{ task.description }}  <button (click)="getSpecificTask(task._id)">Show Me</button></li>
+      <div class= "taskBox">
+        <h2>{{ task.title }}</h2> 
+        <p>{{ task.description }}</p>
+        <p *ngIf="task.completed" class="green">Completed</p>
+        <p *ngIf="!task.completed" class="red">Incomplete</p>   
+        <button (click)="getSpecificTask(task._id)">Edit</button>
+        <button (click)="removeTaskFromService(task._id)">Delete</button>
+      </div>
     </ul>
   </div>
   <div id="oneTask" *ngIf="oneTask">
-    <h1>The task:</h1>
-    <ul>
-      <li>{{ oneTask.title }} - {{ oneTask.description }}</li>
-    </ul>
+    <h2>Edit a task:</h2>
+    <form (submit)="updateTaskService()">
+      <!-- <p>{{ oneTask | json }}</p> -->
+      <table>
+        <tr>
+          <td>
+            Title:
+          </td>
+          <td>
+            <input type="text" name="oneTask.title" [(ngModel)]="oneTask.title">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Description:
+          </td>
+          <td>
+            <input type="text" name="oneTask.description" [(ngModel)]="oneTask.description">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Completed:
+          </td>
+          <td>
+            <select  name="oneTask.completed" [(ngModel)]="oneTask.completed">
+              <option value="true">Complete</option>
+              <option value="false" selected>Incomplete</option>
+            </select>
+          </td>
+          <td>
+            <input type="submit" value="Edit Task">
+          </td>
+        </tr>
+      </table>
+    </form>
   </div>
 </div>
 

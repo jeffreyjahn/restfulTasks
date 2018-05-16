@@ -8,12 +8,20 @@ export class HttpService {
 
   constructor(private _http: HttpClient){
     this.getTasks();
-    this.getTask("5af9f9747fabe7d423d34620");
+  }
+  newTask(newTask){
+    return this._http.post('/api/tasks/new', newTask);
   }
   getTasks(){
-    return this._http.get('/tasks');
+    return this._http.get('/api/tasks');
   }
   getTask(id){
-    return this._http.get('/'+id+'/');
+    return this._http.get('/api/'+id+'/');
+  }
+  removeTask(id){
+    return this._http.delete('/api/remove/'+id+'/');
+  }
+  updateTask(oneTask){
+    return this._http.put('/api/update/'+oneTask._id+'/', oneTask);
   }
 }

@@ -1,0 +1,16 @@
+.red{
+    color: red;
+}
+
+.green{
+    color:green;
+}
+#tasks{
+    display: inline-block;
+    width: 40%;
+}
+#oneTask{
+    display:inline-block;
+    width: auto;
+    vertical-align: top;
+}

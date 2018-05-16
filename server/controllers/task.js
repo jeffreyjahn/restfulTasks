@@ -5,16 +5,15 @@ const Task = mongoose.model('tasks');
 module.exports={
     index: (req, res)=>{
         Task.find({}, (err, tasks)=>{
-            console.log(err);
-            console.log(tasks);
+            // console.log(err);
+            // console.log(tasks);
             return res.json(tasks);
         });
     },
-// FINISH ALL THE TASK.JSSADOKLSKMDADSALKM
     task: (req, res)=>{
         Task.findOne({_id: req.params.task_id}, (err, task)=>{
             if(err) {
-                return res.redirect('/tasks');
+                return res.redirect('/api/tasks');
             };
             return res.json(task);
         });
@@ -27,23 +26,25 @@ module.exports={
                 for(var key in err.errors){
                     req.flash('newTask', err.errors[key].message);
                 }
-                res.redirect('/tasks');
+                return;
             } else{
-                res.redirect('/tasks');
+                return res.json(newTask);
             }
         });
     },
     updateTask:(req, res)=>{
-        Task.findOne({_id: req.params.task_id}, (err, task)=>{
+        Task.update({_id: req.body._id}, req.body,(err, task)=>{
             if(err) {
-                return res.redirect('/tasks');
+                console.log('yo');
+                return;
             };
+            console.log('updated!!!');
             return res.json(task);
         });
     },
     removeTask:(req, res)=>{
         Task.remove({_id: req.params.task_id}, (err)=>{
-            res.redirect('/tasks');
+            return;
         });
     },
 }
